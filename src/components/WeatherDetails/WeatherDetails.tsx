@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./WeatherDetails.css";
 import { WeatherData } from "../weatherTypes";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import vector from "../../assets/Vector.png";
 import degree from "../../assets/degree.png";
@@ -22,6 +22,8 @@ import {
 
 import "chartjs-adapter-date-fns";
 import { Line } from "react-chartjs-2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 ChartJS.register(
   LineElement,
@@ -31,14 +33,14 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const WeatherDetails: React.FC<{ name: string }> = ({ name }) => {
+const WeatherDetails: React.FC<{ Name: string }> = ({ Name }) => {
   const { name } = useParams<{ name?: string }>();
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const dispatch = useDispatch();
   const [sunrise, setSunrise] = useState(0);
   const [sunset, setSunset] = useState(0);
   const [lengthOfDay, setLengthOfDay] = useState("");
-
+  const navigate = useNavigate();
   const [daylightRemaining, setDaylightRemaining] = useState("");
   const [rainPercentage, setRainPercentage] = useState(0);
   const [currentTime, setCurrentTime] = useState("");
@@ -48,10 +50,9 @@ const WeatherDetails: React.FC<{ name: string }> = ({ name }) => {
       const response = await axios.get<WeatherData>(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityId}&appid=f5427a0f5207b76cb82078bf8d15c9cb`
       );
-      
 
       setWeatherData(response.data);
-      
+
       setSunrise(response.data.sys.sunrise);
 
       setSunset(response.data.sys.sunset);
@@ -137,9 +138,9 @@ const WeatherDetails: React.FC<{ name: string }> = ({ name }) => {
     return roundedDecimalHours;
   };
 
-  if (!weatherData) {
-    return <div>Loading... ..</div>;
-  }
+  // if (!weatherData) {
+  //   return <div>Loading... ..</div>;
+  // }
   const chartData = {
     labels: [1, 2, 3],
     datasets: [
@@ -179,74 +180,80 @@ const WeatherDetails: React.FC<{ name: string }> = ({ name }) => {
     },
   };
 
+  
 
   const temperatureInCelsius = Math.round(weatherData.main.temp - 273.15);
   const imgUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
 
   return (
     <>
-    
-    <div className="weather-details-container">
-    <div style={{display:'flex',justifyItems:'space-between',alignItems:"center"}}>
-      <div className="backbutton">
-        <a style={{textDecoration:'none', color:'black',}} href="/">BACK</a>
-      </div>
-        <AddToList name={weatherData.name} weatherData={weatherData}/>
-    </div>
-      <div className="header-details">
-        <img
-          className="city-weather-img"
-          src={imgUrl}
-          alt={weatherData.weather[0].description}
-        ></img>
-        <div className="city-details">
-          <p className="city-name">{weatherData.name}</p>
-          <img src={vector} alt="vector" />
-        </div>
-        <div className="temp-details">
-          <p className="temp-value">{temperatureInCelsius}</p>
-          <img src={degree} alt="degree" />
-        </div>
-      </div>
+      <div style={{padding:'30px'}}className="weather-details-container">
+        <div className="list-container">
+          <Link style={{textDecoration:'none'}} to='/weatherApp'>
+          <div className="backbutton">
+            <FontAwesomeIcon icon={faAngleLeft} className="less-than" />
 
-      <div className="section-details">
-        <div className="time-details">
-          <p>TIME</p>
-          <p> {currentTime}</p>
-        </div>
-        <div className="pressure-details">
-          <p>PRESSURE</p>
-          <p>963</p>
-        </div>
-        <div className="rain-details">
-          <p>%RAIN</p>
-          <p>{rainPercentage}</p>
-        </div>
-        <div className="humidity-details">
-          <p>HUMIDITY</p>
-          <p>22</p>
-        </div>
-      </div>
+            <a style={{ textDecoration: "none", color: "#0170FE" }} href="/">
+              BACK
+            </a>
+          </div>
+          </Link>
 
-      <div className="footer-details">
-        <div className="day-details">
-          <p className="day-heading">SUNRISE & SUNSET</p>
-          <div className="day-data">
-            <div className="day-length">
-              <p className="day-heading">Length of day:</p>
-              <p className="day-value">{lengthOfDay}</p>
-            </div>
-            <div className="day-remain">
-              <p className="day-heading">Remaining daylight:</p>
-              <p className="day-value">{daylightRemaining}</p>
-            </div>
+          <AddToList name={weatherData.name} weatherData={weatherData} />
+         
+        </div>
+        <div className="header-details">
+          <img
+            className="city-weather-img"
+            src={imgUrl}
+            alt={weatherData.weather[0].description}
+          ></img>
+          <div className="city-details">
+            <p className="city-name">{weatherData.name}</p>
+            <img src={vector} alt="vector" />
+          </div>
+          <div className="temp-details">
+            <p className="temp-value">{temperatureInCelsius}</p>
+            <img src={degree} alt="degree" />
           </div>
         </div>
-        <div className="day-graph">
-          <Line data={chartData} options={chartOptions} />
+        <div className="section-details">
+          <div className="time-details">
+            <p>TIME</p>
+            <p> {currentTime}</p>
+          </div>
+          <div className="pressure-details">
+            <p>PRESSURE</p>
+            <p>963</p>
+          </div>
+          <div className="rain-details">
+            <p>%RAIN</p>
+            <p>{rainPercentage}</p>
+          </div>
+          <div className="humidity-details">
+            <p>HUMIDITY</p>
+            <p>22</p>
+          </div>
+        </div>
+        <div className="footer-details">
+          <div className="day-details">
+            <p className="day-heading">SUNRISE & SUNSET</p>
+            <div className="day-data">
+              <div className="day-length">
+                <p className="day-heading">Length of day:</p>
+                <p className="day-value">{lengthOfDay}</p>
+              </div>
+              <div className="day-remain">
+                <p className="day-heading">Remaining daylight:</p>
+                <p className="day-value">{daylightRemaining}</p>
+              </div>
+            </div>
+          </div>
+          <div className="day-graph">
+            <Line data={chartData} options={chartOptions} />
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

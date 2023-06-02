@@ -14,7 +14,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<WeatherApp />} />
-          <Route path="/weather-details/:name" element={<WeatherDetails name={WeatherDetails.name} />} />
+          <Route path="/weather-details/:name" element={<WeatherDetails Name={WeatherDetails.name} />} />
+          <Route path="/weatherApp" element={<WeatherApp/>}/>
         </Routes>
       </Router>
       </Provider>

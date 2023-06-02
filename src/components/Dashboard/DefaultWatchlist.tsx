@@ -23,7 +23,7 @@ const DefaultWatchlist = () => {
     <Splide options={{ type: 'loop', perPage: 1 }}>
       {cityNames.map((city: { id: React.Key | null | undefined; name: any; }) => (
         <SplideSlide key={city.id}>
-          <WeatherDetails name={city.name} />
+          <WeatherDetails Name={city.name} />
         </SplideSlide>
       ))}
     </Splide>

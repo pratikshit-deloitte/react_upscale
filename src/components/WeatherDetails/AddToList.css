@@ -1,0 +1,18 @@
+.button-with-icon {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .add-list-btn {
+    border: none;
+    background: none;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-right: 10px;
+  }
+  

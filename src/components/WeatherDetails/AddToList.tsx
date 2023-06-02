@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCityName, removeCityName } from '../Redux/weatherSlice';
 import { useSelector } from 'react-redux';
-
-
+import plusicon from "../../assets/plusicon.png";
+import "./AddToList.css";
 interface WeatherData {
   name: string;
 }
@@ -33,7 +33,18 @@ const AddToListButton: React.FC<AddToListButtonProps> = ({ name, weatherData }) 
   return (
     <div>
       {!added ? (
-        <button onClick={handleAddToList}>Add to List</button>
+        <div className="button-with-icon">
+
+        <button onClick={handleAddToList} className="add-list-btn">
+
+          Add to List
+
+        </button>
+
+        <img src={plusicon} alt="Plus Icon" className="icon" />
+
+      </div>
+  
       ) : (
         <div>
           <button style={{ backgroundColor: '#009456', width: '150px', height: '50px', color: 'white', fontWeight: 700, marginRight: '30px', border: 'none', borderRadius: '10px' }}>Successfully Added</button>

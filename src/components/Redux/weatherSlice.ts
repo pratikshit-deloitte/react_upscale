@@ -22,4 +22,6 @@ export const weatherSlice = createSlice({
 });
 
 export const { addCityName, removeCityName } = weatherSlice.actions;
-export const selectCityNames = (state: { weather: WeatherState }) => state.weather.cityNames;
+export const selectCityNames = (state: {
+  cityNames: any; weather: WeatherState 
+}) => state.cityNames;

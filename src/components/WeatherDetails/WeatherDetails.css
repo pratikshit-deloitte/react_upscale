@@ -132,3 +132,37 @@
   align-items: center;
   width: 100%;
 }
+.list-container {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+}
+
+
+
+
+.backbutton {
+
+  font-family: Roboto;
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+  line-height: 24px;
+
+  letter-spacing: 0em;
+
+  text-align: left;
+
+}
+
+.less-than {
+
+  margin-right: 10px;
+
+}
