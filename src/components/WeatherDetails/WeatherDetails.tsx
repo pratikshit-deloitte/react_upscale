@@ -138,9 +138,9 @@ const WeatherDetails: React.FC<{ Name: string }> = ({ Name }) => {
     return roundedDecimalHours;
   };
 
-  // if (!weatherData) {
-  //   return <div>Loading... ..</div>;
-  // }
+  if (!weatherData) {
+    return <div>Loading... ..</div>;
+  }
   const chartData = {
     labels: [1, 2, 3],
     datasets: [
