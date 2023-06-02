@@ -1,0 +1,21 @@
+.topnav-container {
+  padding-left: 2%;
+  height: 20%;
+  background-color: #b2ebf280;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 7%;
+}
+
+.weather-img {
+  margin-right: 20px;
+}
+.title {
+  color: #000000;
+  font-family: Roboto;
+  font-style: SemiBold;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}

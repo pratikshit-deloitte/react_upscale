@@ -1,0 +1,134 @@
+.weather-details-container {
+  margin-top: -6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.city-weather-img {
+  height: 123px;
+  width: 123px;
+  object-fit: cover; /* or "contain" based on your preference */
+  object-position: center;
+  background: none;
+}
+
+.city-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.city-details img {
+  height: 21px;
+  width: 21px;
+}
+
+.city-name {
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 600;
+
+  letter-spacing: 0em;
+  text-align: center;
+  color: #2c2c2c;
+  margin-right: 30px;
+}
+
+.temp-details {
+  display: flex;
+  width: 100px;
+  justify-content: center;
+}
+.temp-details img {
+  width: 6px;
+  height: 6px;
+}
+
+.temp-value {
+  font-family: Poppins;
+  font-size: 70px;
+  font-weight: 500;
+
+  letter-spacing: 0em;
+}
+
+.section-details {
+  margin-top: 30px;
+  margin-left: 60px;
+  min-width: 500px;
+  width: 55%;
+  height: 124px;
+  padding: 15px;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #535353;
+  border: 1px solid #0000001a;
+  stroke: Solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 11px;
+}
+
+.time {
+  width: 100px;
+}
+.footer-details {
+  width: 55%;
+  min-width: 800px;
+  height: 304px;
+  border: 1px solid #0000001a;
+  stroke: Solid rgba(0, 0, 0, 0.1);
+  border-radius: 11px;
+  padding: 15px;
+  display: flex;
+}
+.day-details {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.day-graph {
+  flex-basis: 50%;
+}
+
+.day-heading {
+  flex-basis: 50%;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  color: #c4c4c4;
+}
+.day-data {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.day-length,
+.day-remain {
+  display: flex;
+  align-items: center;
+}
+
+.day-length {
+  width: 245px;
+}
+.day-remain {
+  width: 340px;
+}
+
+.day-graph {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}

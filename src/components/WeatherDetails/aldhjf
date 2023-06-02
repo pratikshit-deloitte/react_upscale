@@ -1,0 +1,3 @@
+city name array
+
+const city Name = useSelector(selectcity name)
